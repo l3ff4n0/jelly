@@ -1,0 +1,13 @@
+file.scsslint = {
+  'success': false,
+  'errors': 0,
+  'warnings': 1,
+  'issues': [
+    {
+      'line': 123,
+      'column': 10,
+      'severity': 'warning', // or `error`
+      'reason': 'a description of the error'
+    }
+  ]
+};
