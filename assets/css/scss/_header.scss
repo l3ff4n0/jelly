@@ -1,3 +1,18 @@
+$red:  #f00;
+$green:  #008000;
+
 * {
-    background: #ff0000;
+
+  background: $red;
+  border: 1px solid $green;
+  padding: 0;
+}
+
+.pippo {
+
+  background: $red;
+  height: 10px;
+  width: 50px;
+  color: green;
+  opacity: .9;
 }

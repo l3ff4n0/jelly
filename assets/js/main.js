@@ -1,3 +1,2 @@
-console.log('test!!!!');
 const pippo = '';
-let pluto = '';
+console.log(pippo);
