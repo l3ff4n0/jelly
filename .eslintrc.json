@@ -9,8 +9,15 @@
         "sourceType": "module"
     },
     "rules": {
-        "no-console": "warn",
+        "max-len": ["warn",{
+            "code": 120
+        }],
+        "no-console": "off",
+        "arrow-body-style": "off",
+        "arrow-parens": "off",
+        "object-curly-newline" : "off",
+        "func-names" : "off",
         "semi": 2,
-        "no-extra-semi" :1
+        "no-extra-semi": 1
     }
 }
