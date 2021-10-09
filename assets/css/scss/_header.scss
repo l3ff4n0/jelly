@@ -9,10 +9,27 @@ $green:  #008000;
 }
 
 .pippo {
-
+  critical: this;
   background: $red;
   height: 10px;
   width: 50px;
   color: green;
   opacity: .9;
+}
+
+.pluto{
+  background: violet;
+}
+
+@critical {
+  .bar {
+    border: 10px solid green;
+    color: green;
+  }
+}
+
+@critical{
+  .test{
+    background: red;
+  }
 }

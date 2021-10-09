@@ -1,7 +1,10 @@
 var gulp = require('gulp'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-sass')(require('sass')),
     scsslint = require('gulp-scss-lint'),
     postcss = require('gulp-postcss'),
+    criticalCss = require('gulp-critical-css'),
+    postcssCriticalCss = require('postcss-critical-css'),
+    cssnano = require('gulp-cssnano'),
     autoprefixer = require('gulp-autoprefixer'),
     cleanCss = require('gulp-clean-css'),
     uglify = require('gulp-uglify'),
@@ -28,11 +31,25 @@ gulp.task('styles', function(done){
     return gulp.src(sassFiles)
         .pipe(sass().on('error', sass.logError))
         .pipe(postcss([autoprefixer]))
+        //.pipe(criticalCss())
         .pipe(cleanCss({compatibility: 'ie10'}))
         .pipe(sourcemaps.init())
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(cssFolder))
         .pipe(notify({message: 'sass compiled successfully'}))
+});
+
+//Critical css files
+gulp.task('criticalCSS', function () {
+    var processors = [
+        postcssCriticalCss({
+            'outputPath': cssFolder,
+            'output': 'critical',
+        })
+    ];
+ 
+    return gulp.src(sassFiles)
+    .pipe(postcss(processors))
 });
 
 //Es liting js to write better
@@ -59,6 +76,6 @@ gulp.task('minify-js', function () {
 
 //Default task
 gulp.task('default', function(){
-    gulp.watch(sassFiles, gulp.series('scss-lint','styles'));
+    gulp.watch(sassFiles, gulp.series('scss-lint','styles','criticalCSS'));
     gulp.watch(['assets/js/*.js','!assets/js/*.min.js'], gulp.series('es-lint','minify-js'));
 });

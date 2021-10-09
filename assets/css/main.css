@@ -1,2 +1,2 @@
-*{background:red;border:1px solid green;padding:0}.pippo{background:red;height:10px;width:50px;color:green;opacity:.9}
+*{background:red;border:1px solid green;padding:0}.pippo{critical:this;background:red;height:10px;width:50px;color:green;opacity:.9}.pluto{background:violet}@critical{color:green}
 /*# sourceMappingURL=main.css.map */
